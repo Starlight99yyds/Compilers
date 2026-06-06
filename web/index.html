@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>L26 语法实验台</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Noto+Sans+SC:wght@400;500;700&family=ZCOOL+QingKe+HuangYou&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <main class="app-shell">
+    <header class="hero">
+      <p class="tag">Compiler Lab / Flex + Bison</p>
+      <h1>L26 语法实验台</h1>
+      <p class="subtitle">面向课程大作业的测试与展示界面：一键加载样例、编译解析器并运行程序。</p>
+    </header>
+
+    <section class="panel control-panel">
+      <div class="button-row">
+        <button id="btn-sample-1" class="btn ghost">加载样例 1</button>
+        <button id="btn-sample-2" class="btn ghost">加载样例 2</button>
+        <button id="btn-build" class="btn accent">编译解析器</button>
+        <button id="btn-run" class="btn accent">运行程序</button>
+        <button id="btn-export" class="btn ghost">导出测试用例</button>
+        <button id="btn-clear-log" class="btn ghost">清空输出</button>
+      </div>
+      <div class="status-row">
+        <span class="pill" id="status-server">Server: 检测中</span>
+        <span class="pill" id="status-parser">Parser: 未编译</span>
+        <span class="pill" id="status-lines">Lines: 0</span>
+        <span class="pill" id="status-chars">Chars: 0</span>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <article class="panel editor-panel">
+        <div class="panel-title">
+          <h2>源码编辑区</h2>
+          <p>支持 L26 基础语法输入（声明、控制流、集合字面量与集合操作）</p>
+        </div>
+        <label class="input-label" for="program-input">read 输入（每行一个值）</label>
+        <textarea id="program-input" class="program-input" spellcheck="false" placeholder="例如：&#10;2&#10;10"></textarea>
+        <div class="editor-shell">
+          <div class="editor-gutter" id="editor-gutter" aria-hidden="true"></div>
+          <div class="editor-body">
+            <div class="editor-highlight" id="editor-highlight" hidden></div>
+            <textarea id="source-code" spellcheck="false"></textarea>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel output-panel">
+        <div class="panel-title">
+          <h2>运行输出区</h2>
+          <p>显示编译日志、语法检查结果和程序 read/write 输出</p>
+        </div>
+        <div id="terminal-log"></div>
+      </article>
+    </section>
+
+    <section class="panel footer-panel">
+      <h3>本地运行说明</h3>
+      <ol>
+        <li>在 `Final_Term/web` 执行：<code>node server.js</code></li>
+        <li>浏览器访问：<code>http://localhost:4399</code></li>
+        <li>先点“编译解析器”，再点“运行程序”</li>
+      </ol>
+    </section>
+  </main>
+
+  <script src="./app.js"></script>
+</body>
+</html>
